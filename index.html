@@ -46,12 +46,32 @@
         <img
           src="img/homehero.png"
           alt="A picture of ai generated software developer that represents me"
+          height="200"
         />
       </div>
       <h1>Hi, I'm Shaheem</h1>
       <div id="contact-me">
         <h2>This is how to contact me</h2>
-        <a href="#">Use this form</a>
+        <form action="" method="post" id="contact-form">
+          <div>
+            <label for="name">Name: </label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div>
+            <label for="email">Email: </label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div>
+            <label for="messgae">Message: </label>
+            <textarea rows="5" id="message" name="message" required></textarea>
+          </div>
+          <div>
+            <button type="submit">Contact Shaheem</button>
+            <button type="reset">Reset</button>
+          </div>
+        </form>
       </div>
       <div id="portfolio-section">
         <div class="project">
