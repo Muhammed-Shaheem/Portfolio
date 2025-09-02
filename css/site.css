@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+html {
+  font-size: 36px;
+  font-weight: 300;
+  font-family: Quicksand, sans-serif;
+}
+
+Body {
+  max-width: 1400px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+}
+
+h2 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+p {
+  line-height: 1.5rem;
+}
+
+form {
+  padding: 0 15%;
+}
+
+input,
+textarea {
+  font-size: 0.8rem;
+}
+
+form div {
+  display: grid;
+  grid-template-columns: auto;
+}
+
+#form-btn {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  margin: 0.25rem;
+  font-size: 0.75rem;
+  padding: 0.25rem 5%;
+}
+
+header {
+  color: white;
+  background-color: black;
+  text-align: center;
+  font-size: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+footer {
+  color: white;
+  background-color: black;
+  text-align: center;
+  font-size: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.hero {
+  position: relative;
+}
+
+.hero h1 {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  margin-left: 0.5rem;
+}
+
+#contact-me h2 {
+  margin: 0;
+  text-align: center;
+}
+
+#portfolio-section {
+  position: relative;
+}
+
+.project h2 {
+  margin: 0;
+  color: white;
+}
+
+.project {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.project a {
+  color: chocolate;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.my-story > h2 {
+  margin: 1rem 0;
+}
+
+.my-story {
+  padding: 0 15%;
+}
