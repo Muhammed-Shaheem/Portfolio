@@ -76,6 +76,24 @@ img {
   height: auto;
 }
 
+nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: end;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+}
+
+nav ul li {
+  list-style: none;
+  padding-right: 0.5rem;
+}
+
 .hero {
   position: relative;
 }
@@ -120,3 +138,21 @@ img {
 .my-story {
   padding: 0 15%;
 }
+
+.project-container{
+  display: flex;
+  align-items:center;
+  text-align: center;
+}
+
+.project-details h2{
+  margin: 0;
+
+}
+
+.project-details a{
+  color: chocolate;
+  font-size: 1.5rem;
+}
+
+ 
