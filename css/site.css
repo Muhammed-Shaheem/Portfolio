@@ -139,20 +139,47 @@ nav ul li {
   padding: 0 15%;
 }
 
-.project-container{
+.project-container {
   display: flex;
-  align-items:center;
+  align-items: center;
   text-align: center;
 }
 
-.project-details h2{
-  margin: 0;
-
+.project-container img{
+  width: 50%;
 }
 
-.project-details a{
+.project-details h2 {
+  margin: 0;
+}
+
+.project-details a {
   color: chocolate;
   font-size: 1.5rem;
 }
 
- 
+#project-title {
+  margin: 0;
+  text-align: center;
+}
+
+#project-about,
+#project-technologies,
+#project-challenges {
+  text-align: center;
+}
+
+#image-container{
+  display: flex;
+  justify-content: center;
+}
+
+#project-image{
+  width: 50%;
+  border: 3px solid black;
+}
+
+
+/* .workitem-main h3,.workitem-main p{
+margin: 0;
+} */
