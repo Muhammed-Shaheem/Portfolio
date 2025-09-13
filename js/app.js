@@ -1,6 +1,7 @@
 (function (app) {
   'use strict';
-
+  app.portfolioItems = [];
+  app.selectedItem = {};
   app.homePage = function () {
     app.getCopyrightYear();
     app.sendEmail();
@@ -12,6 +13,9 @@
 
   app.workItemPage = function () {
     app.getCopyrightYear();
+    loadPageData();
+    loadSpecificItem();
+    updateItemPage();
   };
   app.getCopyrightYear = function () {
     document.querySelector('.year').innerText = new Date().getFullYear();
@@ -38,4 +42,53 @@
     emailAddress.value = '';
     message.value = '';
   };
+
+  async function loadPageData() {
+    const cacheData = sessionStorage.getItem('site-data');
+    if (cacheData !== null) {
+      app.portfolioItems = JSON.parse(cacheData);
+    } else {
+      const rawData = await fetch('./sitedata.json');
+      const data = await rawData.json();
+      app.portfolioItems = data;
+      sessionStorage.setItem('site-data', JSON.stringify(data));
+    }
+  }
+  function loadSpecificItem() {
+    const params = new URLSearchParams(window.location.search);
+    let item = Number.parseInt(params.get('item'));
+
+    if (item > app.portfolioItems.length || item < 1) {
+      item = 1;
+    }
+    app.selectedItem = app.portfolioItems[item - 1];
+    app.selectedItem.id = item;
+  }
+
+  function updateItemPage() {
+    const header = document.getElementById('project-title');
+    header.innerText = `0${app.selectedItem.id}. ${app.selectedItem.Title}`;
+
+    const img = document.getElementById('project-image');
+    img.src = app.selectedItem.Img;
+    img.alt = app.selectedItem.ImgAlt;
+
+    const about = document.querySelector('#project-about p');
+    about.innerText = app.selectedItem.About;
+
+    const techStackList = document.querySelector('#project-technologies ul');
+    const techSection = document.querySelector('#project-technologies');
+    const ul = document.createElement('ul');
+
+    app.selectedItem.Technologies.forEach((x) => {
+      const li = document.createElement('li');
+      li.innerText = x;
+      ul.appendChild(li);
+    });
+    techStackList.remove();
+    techSection.appendChild(ul);
+
+    const challenges = document.querySelector('#project-challenges p');
+    challenges.innerText = app.selectedItem.Challenges
+  }
 })((window.app = window.app || {}));

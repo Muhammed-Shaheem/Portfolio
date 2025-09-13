@@ -169,6 +169,11 @@ nav ul li {
   text-align: center;
 }
 
+#project-technologies li{
+  list-style: none;
+  
+}
+
 #image-container{
   display: flex;
   justify-content: center;
@@ -179,7 +184,3 @@ nav ul li {
   border: 3px solid black;
 }
 
-
-/* .workitem-main h3,.workitem-main p{
-margin: 0;
-} */
