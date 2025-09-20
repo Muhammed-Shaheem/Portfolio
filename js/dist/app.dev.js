@@ -13,6 +13,8 @@
 
   app.portfolioPage = function () {
     app.getCopyrightYear();
+    loadPageData();
+    loadPortfolioPage();
   };
 
   app.workItemPage = function () {
@@ -116,5 +118,34 @@
     techSection.appendChild(ul);
     var challenges = document.querySelector('#project-challenges p');
     challenges.innerText = app.selectedItem.Challenges;
+  }
+
+  function loadPortfolioPage() {
+    app.portfolioItems.forEach(function (x, i) {
+      var projContainer = document.createElement('div');
+
+      if (i % 2 !== 0) {
+        projContainer.classList.add('project-container-odd');
+      }
+
+      projContainer.classList.add('project-container');
+      var img = document.createElement('img'); // const img = document.querySelector('.project-container img');
+
+      img.src = x.Img;
+      img.alt = x.ImgAlt;
+      projContainer.appendChild(img);
+      var projDetails = document.createElement('div');
+      projDetails.classList.add('project-details');
+      var h2 = document.createElement('h2');
+      var a = document.createElement('a'); // const title = document.querySelector('.project-details h2');
+
+      h2.innerText = x.Title;
+      a.href = "workitem.html?item=".concat(x.Id);
+      a.innerText = 'See more';
+      projDetails.appendChild(h2);
+      projDetails.appendChild(a);
+      projContainer.appendChild(projDetails);
+      document.querySelector('main').appendChild(projContainer);
+    });
   }
 })(window.app = window.app || {});

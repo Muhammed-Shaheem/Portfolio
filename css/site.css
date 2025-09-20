@@ -145,8 +145,16 @@ nav ul li {
   text-align: center;
 }
 
-.project-container img{
-  width: 50%;
+.project-container-odd {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  text-align: center;
+}
+
+.project-container img {
+width: calc(50% - 2px);
+  border: 1px solid black;
 }
 
 .project-details h2 {
@@ -169,18 +177,16 @@ nav ul li {
   text-align: center;
 }
 
-#project-technologies li{
+#project-technologies li {
   list-style: none;
-  
 }
 
-#image-container{
+#image-container {
   display: flex;
   justify-content: center;
 }
 
-#project-image{
+#project-image {
   width: 50%;
-  border: 3px solid black;
+  border: 1px solid black;
 }
-
