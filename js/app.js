@@ -15,7 +15,7 @@
   };
 
   app.workItemPage = async function () {
-    app.getCopyrightYear();
+    app.getCopyrightYear();c
     await loadPageData();
     loadNavItems();
     loadSpecificItem();
