@@ -7,14 +7,17 @@
     sendEmail();
   };
 
-  app.portfolioPage = function () {
-    app.getCopyrightYear();
-    loadPortfolioPageAsync();
-  };
-
-  app.workItemPage =async function () {
+  app.portfolioPage = async function () {
     app.getCopyrightYear();
     await loadPageData();
+    loadNavItems();
+    loadPortfolioPage();
+  };
+
+  app.workItemPage = async function () {
+    app.getCopyrightYear();
+    await loadPageData();
+    loadNavItems();
     loadSpecificItem();
     updateItemPage();
   };
@@ -94,37 +97,49 @@
     challenges.innerText = app.selectedItem.Challenges;
   }
 
-  async function loadPortfolioPageAsync() {
-    await loadPageData();
+  function loadPortfolioPage() {
     let main = document.querySelector('main');
+    const nav = document.querySelector('nav');
+
     app.portfolioItems.forEach((x, i) => {
+      const img = document.createElement('img');
+      const projDetails = document.createElement('div');
       const projContainer = document.createElement('div');
+      const h2 = document.createElement('h2');
+      const a = document.createElement('a');
+
+      projContainer.classList.add('project-container');
       if (i % 2 !== 0) {
         projContainer.classList.add('project-container-odd');
       }
 
-      projContainer.classList.add('project-container');
-
-      const img = document.createElement('img');
       img.src = x.Img;
       img.alt = x.ImgAlt;
       projContainer.appendChild(img);
-
-      const projDetails = document.createElement('div');
       projDetails.classList.add('project-details');
-
-      const h2 = document.createElement('h2');
-      const a = document.createElement('a');
 
       h2.innerText = x.Title;
       a.href = `workitem.html?item=${x.Id}`;
       a.innerText = 'See more';
-
       projDetails.appendChild(h2);
       projDetails.appendChild(a);
-
       projContainer.appendChild(projDetails);
+
       main.appendChild(projContainer);
+    });
+  }
+
+  function loadNavItems() {
+    const nav = document.querySelector('nav ul');
+    app.portfolioItems.forEach((x) => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+
+      a.href = `workitem.html?item=${x.Id}`;
+      a.innerText = x.NavTitle;
+
+      li.appendChild(a);
+      nav.appendChild(li);
     });
   }
 })((window.app = window.app || {}));

@@ -11,12 +11,7 @@
     sendEmail();
   };
 
-  app.portfolioPage = function () {
-    app.getCopyrightYear();
-    loadPortfolioPageAsync();
-  };
-
-  app.workItemPage = function _callee() {
+  app.portfolioPage = function _callee() {
     return regeneratorRuntime.async(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -26,12 +21,34 @@
             return regeneratorRuntime.awrap(loadPageData());
 
           case 3:
-            loadSpecificItem();
-            updateItemPage();
+            loadNavItems();
+            loadPortfolioPage();
 
           case 5:
           case "end":
             return _context.stop();
+        }
+      }
+    });
+  };
+
+  app.workItemPage = function _callee2() {
+    return regeneratorRuntime.async(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            app.getCopyrightYear();
+            _context2.next = 3;
+            return regeneratorRuntime.awrap(loadPageData());
+
+          case 3:
+            loadNavItems();
+            loadSpecificItem();
+            updateItemPage();
+
+          case 6:
+          case "end":
+            return _context2.stop();
         }
       }
     });
@@ -62,39 +79,39 @@
 
   function loadPageData() {
     var cacheData, rawData, data;
-    return regeneratorRuntime.async(function loadPageData$(_context2) {
+    return regeneratorRuntime.async(function loadPageData$(_context3) {
       while (1) {
-        switch (_context2.prev = _context2.next) {
+        switch (_context3.prev = _context3.next) {
           case 0:
             console.log('json check');
             cacheData = sessionStorage.getItem('site-data');
 
             if (!(cacheData !== null)) {
-              _context2.next = 6;
+              _context3.next = 6;
               break;
             }
 
             app.portfolioItems = JSON.parse(cacheData);
-            _context2.next = 14;
+            _context3.next = 14;
             break;
 
           case 6:
-            _context2.next = 8;
+            _context3.next = 8;
             return regeneratorRuntime.awrap(fetch('./sitedata.json'));
 
           case 8:
-            rawData = _context2.sent;
-            _context2.next = 11;
+            rawData = _context3.sent;
+            _context3.next = 11;
             return regeneratorRuntime.awrap(rawData.json());
 
           case 11:
-            data = _context2.sent;
+            data = _context3.sent;
             app.portfolioItems = data;
             sessionStorage.setItem('site-data', JSON.stringify(data));
 
           case 14:
           case "end":
-            return _context2.stop();
+            return _context3.stop();
         }
       }
     });
@@ -134,47 +151,44 @@
     challenges.innerText = app.selectedItem.Challenges;
   }
 
-  function loadPortfolioPageAsync() {
-    var main;
-    return regeneratorRuntime.async(function loadPortfolioPageAsync$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.next = 2;
-            return regeneratorRuntime.awrap(loadPageData());
+  function loadPortfolioPage() {
+    var main = document.querySelector('main');
+    var nav = document.querySelector('nav');
+    app.portfolioItems.forEach(function (x, i) {
+      var img = document.createElement('img');
+      var projDetails = document.createElement('div');
+      var projContainer = document.createElement('div');
+      var h2 = document.createElement('h2');
+      var a = document.createElement('a');
+      projContainer.classList.add('project-container');
 
-          case 2:
-            main = document.querySelector('main');
-            app.portfolioItems.forEach(function (x, i) {
-              var projContainer = document.createElement('div');
-
-              if (i % 2 !== 0) {
-                projContainer.classList.add('project-container-odd');
-              }
-
-              projContainer.classList.add('project-container');
-              var img = document.createElement('img');
-              img.src = x.Img;
-              img.alt = x.ImgAlt;
-              projContainer.appendChild(img);
-              var projDetails = document.createElement('div');
-              projDetails.classList.add('project-details');
-              var h2 = document.createElement('h2');
-              var a = document.createElement('a');
-              h2.innerText = x.Title;
-              a.href = "workitem.html?item=".concat(x.Id);
-              a.innerText = 'See more';
-              projDetails.appendChild(h2);
-              projDetails.appendChild(a);
-              projContainer.appendChild(projDetails);
-              main.appendChild(projContainer);
-            });
-
-          case 4:
-          case "end":
-            return _context3.stop();
-        }
+      if (i % 2 !== 0) {
+        projContainer.classList.add('project-container-odd');
       }
+
+      img.src = x.Img;
+      img.alt = x.ImgAlt;
+      projContainer.appendChild(img);
+      projDetails.classList.add('project-details');
+      h2.innerText = x.Title;
+      a.href = "workitem.html?item=".concat(x.Id);
+      a.innerText = 'See more';
+      projDetails.appendChild(h2);
+      projDetails.appendChild(a);
+      projContainer.appendChild(projDetails);
+      main.appendChild(projContainer);
+    });
+  }
+
+  function loadNavItems() {
+    var nav = document.querySelector('nav ul');
+    app.portfolioItems.forEach(function (x) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = "workitem.html?item=".concat(x.Id);
+      a.innerText = x.NavTitle;
+      li.appendChild(a);
+      nav.appendChild(li);
     });
   }
 })(window.app = window.app || {});
