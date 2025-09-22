@@ -13,7 +13,8 @@
       "SQLite",
       "Dapper",
       "Git",
-      "GitHub"
+      "GitHub",
+      "Bootstrap"
     ],
     "Challenges": "The main challenges included designing an efficient booking workflow, synchronizing data between the web and desktop apps, and handling booking conflicts. Optimizing database queries with Dapper."
   },
@@ -31,12 +32,32 @@
       "SQLite",
       "Dapper",
       "Git",
-      "GitHub"
+      "GitHub",
+      "Bootstrap"
     ],
     "Challenges": "The main challenges included designing an efficient booking workflow, synchronizing data between the web and desktop apps, and handling booking conflicts. Optimizing database queries with Dapper."
   },
   {
-    "Id": 2,
+    "Id": 3,
+    "Title": "Hotel Management System",
+    "Img": "img/Hotel Management.png",
+    "ImgAlt": "A image of the hotel management application",
+    "About": "The Hotel Booking System is a minimal web-based application that allows users to search and book. It provides an Razor Pages web interface for customers to book available rooms and an desktop application for hotel staff to perform booking validation and check-in.",
+    "Technologies": [
+      "ASP.NET Core Razor Pages",
+      "WPF",
+      "C#",
+      "SQL Server",
+      "SQLite",
+      "Dapper",
+      "Git",
+      "GitHub",
+      "Bootstrap"
+    ],
+    "Challenges": "The main challenges included designing an efficient booking workflow, synchronizing data between the web and desktop apps, and handling booking conflicts. Optimizing database queries with Dapper."
+  },
+  {
+    "Id": 4,
     "Title": "Hotel Management System",
     "Img": "img/Hotel Management.png",
     "ImgAlt": "A image of the hotel management application",

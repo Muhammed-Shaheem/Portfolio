@@ -8,34 +8,47 @@
 
   app.homePage = function () {
     app.getCopyrightYear();
-    app.sendEmail();
+    sendEmail();
   };
 
   app.portfolioPage = function () {
     app.getCopyrightYear();
-    loadPageData();
-    loadPortfolioPage();
+    loadPortfolioPageAsync();
   };
 
-  app.workItemPage = function () {
-    app.getCopyrightYear();
-    loadPageData();
-    loadSpecificItem();
-    updateItemPage();
+  app.workItemPage = function _callee() {
+    return regeneratorRuntime.async(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            app.getCopyrightYear();
+            _context.next = 3;
+            return regeneratorRuntime.awrap(loadPageData());
+
+          case 3:
+            loadSpecificItem();
+            updateItemPage();
+
+          case 5:
+          case "end":
+            return _context.stop();
+        }
+      }
+    });
   };
 
   app.getCopyrightYear = function () {
     document.querySelector('.year').innerText = new Date().getFullYear();
   };
 
-  app.sendEmail = function () {
+  function sendEmail() {
     var contactForm = document.getElementById('contact-form');
     var emailAddress = contactForm.querySelector('#email');
     var message = contactForm.querySelector('#message');
-    contactForm.onsubmit = app.onSubmitForm;
-  };
+    contactForm.onsubmit = onSubmitForm;
+  }
 
-  app.onSubmitForm = function (e) {
+  function onSubmitForm(e) {
     e.preventDefault();
     var contactForm = document.getElementById('contact-form');
     var emailAddress = contactForm.querySelector('#email');
@@ -45,42 +58,43 @@
     name.value = '';
     emailAddress.value = '';
     message.value = '';
-  };
+  }
 
   function loadPageData() {
     var cacheData, rawData, data;
-    return regeneratorRuntime.async(function loadPageData$(_context) {
+    return regeneratorRuntime.async(function loadPageData$(_context2) {
       while (1) {
-        switch (_context.prev = _context.next) {
+        switch (_context2.prev = _context2.next) {
           case 0:
+            console.log('json check');
             cacheData = sessionStorage.getItem('site-data');
 
             if (!(cacheData !== null)) {
-              _context.next = 5;
+              _context2.next = 6;
               break;
             }
 
             app.portfolioItems = JSON.parse(cacheData);
-            _context.next = 13;
+            _context2.next = 14;
             break;
 
-          case 5:
-            _context.next = 7;
+          case 6:
+            _context2.next = 8;
             return regeneratorRuntime.awrap(fetch('./sitedata.json'));
 
-          case 7:
-            rawData = _context.sent;
-            _context.next = 10;
+          case 8:
+            rawData = _context2.sent;
+            _context2.next = 11;
             return regeneratorRuntime.awrap(rawData.json());
 
-          case 10:
-            data = _context.sent;
+          case 11:
+            data = _context2.sent;
             app.portfolioItems = data;
             sessionStorage.setItem('site-data', JSON.stringify(data));
 
-          case 13:
+          case 14:
           case "end":
-            return _context.stop();
+            return _context2.stop();
         }
       }
     });
@@ -120,32 +134,47 @@
     challenges.innerText = app.selectedItem.Challenges;
   }
 
-  function loadPortfolioPage() {
-    app.portfolioItems.forEach(function (x, i) {
-      var projContainer = document.createElement('div');
+  function loadPortfolioPageAsync() {
+    var main;
+    return regeneratorRuntime.async(function loadPortfolioPageAsync$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return regeneratorRuntime.awrap(loadPageData());
 
-      if (i % 2 !== 0) {
-        projContainer.classList.add('project-container-odd');
+          case 2:
+            main = document.querySelector('main');
+            app.portfolioItems.forEach(function (x, i) {
+              var projContainer = document.createElement('div');
+
+              if (i % 2 !== 0) {
+                projContainer.classList.add('project-container-odd');
+              }
+
+              projContainer.classList.add('project-container');
+              var img = document.createElement('img');
+              img.src = x.Img;
+              img.alt = x.ImgAlt;
+              projContainer.appendChild(img);
+              var projDetails = document.createElement('div');
+              projDetails.classList.add('project-details');
+              var h2 = document.createElement('h2');
+              var a = document.createElement('a');
+              h2.innerText = x.Title;
+              a.href = "workitem.html?item=".concat(x.Id);
+              a.innerText = 'See more';
+              projDetails.appendChild(h2);
+              projDetails.appendChild(a);
+              projContainer.appendChild(projDetails);
+              main.appendChild(projContainer);
+            });
+
+          case 4:
+          case "end":
+            return _context3.stop();
+        }
       }
-
-      projContainer.classList.add('project-container');
-      var img = document.createElement('img'); // const img = document.querySelector('.project-container img');
-
-      img.src = x.Img;
-      img.alt = x.ImgAlt;
-      projContainer.appendChild(img);
-      var projDetails = document.createElement('div');
-      projDetails.classList.add('project-details');
-      var h2 = document.createElement('h2');
-      var a = document.createElement('a'); // const title = document.querySelector('.project-details h2');
-
-      h2.innerText = x.Title;
-      a.href = "workitem.html?item=".concat(x.Id);
-      a.innerText = 'See more';
-      projDetails.appendChild(h2);
-      projDetails.appendChild(a);
-      projContainer.appendChild(projDetails);
-      document.querySelector('main').appendChild(projContainer);
     });
   }
 })(window.app = window.app || {});

@@ -4,18 +4,17 @@
   app.selectedItem = {};
   app.homePage = function () {
     app.getCopyrightYear();
-    app.sendEmail();
+    sendEmail();
   };
 
   app.portfolioPage = function () {
     app.getCopyrightYear();
-    loadPageData();
-    loadPortfolioPage();
+    loadPortfolioPageAsync();
   };
 
-  app.workItemPage = function () {
+  app.workItemPage =async function () {
     app.getCopyrightYear();
-    loadPageData();
+    await loadPageData();
     loadSpecificItem();
     updateItemPage();
   };
@@ -23,14 +22,14 @@
     document.querySelector('.year').innerText = new Date().getFullYear();
   };
 
-  app.sendEmail = function () {
+  function sendEmail() {
     const contactForm = document.getElementById('contact-form');
     const emailAddress = contactForm.querySelector('#email');
     const message = contactForm.querySelector('#message');
-    contactForm.onsubmit = app.onSubmitForm;
-  };
+    contactForm.onsubmit = onSubmitForm;
+  }
 
-  app.onSubmitForm = function (e) {
+  function onSubmitForm(e) {
     e.preventDefault();
     const contactForm = document.getElementById('contact-form');
     const emailAddress = contactForm.querySelector('#email');
@@ -43,9 +42,10 @@
     name.value = '';
     emailAddress.value = '';
     message.value = '';
-  };
+  }
 
   async function loadPageData() {
+    console.log('json check');
     const cacheData = sessionStorage.getItem('site-data');
     if (cacheData !== null) {
       app.portfolioItems = JSON.parse(cacheData);
@@ -94,7 +94,9 @@
     challenges.innerText = app.selectedItem.Challenges;
   }
 
-  function loadPortfolioPage() {
+  async function loadPortfolioPageAsync() {
+    await loadPageData();
+    let main = document.querySelector('main');
     app.portfolioItems.forEach((x, i) => {
       const projContainer = document.createElement('div');
       if (i % 2 !== 0) {
@@ -104,24 +106,25 @@
       projContainer.classList.add('project-container');
 
       const img = document.createElement('img');
-      // const img = document.querySelector('.project-container img');
       img.src = x.Img;
       img.alt = x.ImgAlt;
       projContainer.appendChild(img);
 
       const projDetails = document.createElement('div');
       projDetails.classList.add('project-details');
+
       const h2 = document.createElement('h2');
       const a = document.createElement('a');
-      // const title = document.querySelector('.project-details h2');
+
       h2.innerText = x.Title;
       a.href = `workitem.html?item=${x.Id}`;
       a.innerText = 'See more';
+
       projDetails.appendChild(h2);
       projDetails.appendChild(a);
 
       projContainer.appendChild(projDetails);
-      document.querySelector('main').appendChild(projContainer);
+      main.appendChild(projContainer);
     });
   }
 })((window.app = window.app || {}));
