@@ -153,7 +153,7 @@ nav ul li {
 }
 
 .project-container img {
-width: calc(50% - 2px);
+  width: calc(50% - 2px);
   border: 1px solid black;
 }
 
@@ -189,4 +189,66 @@ width: calc(50% - 2px);
 #project-image {
   width: 50%;
   border: 1px solid black;
+}
+
+/* @media (max-width: 575.98px) {
+} */
+
+/* Small devices (landscape phones) */
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Medium devices (tablets) */
+@media screen and (min-width: 601px) and (max-width: 767px) {
+  html {
+    font-size: 24px;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Extra large devices (large desktops) */
+@media (min-width: 768px) and (max-width: 991px) {
+  html {
+    font-size: 24px;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  html {
+    font-size: 24px;
+  }
+
+  h1 {
+    font-size: 4.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
 }
