@@ -2,6 +2,7 @@
   'use strict';
   app.portfolioItems = [];
   app.selectedItem = {};
+
   app.homePage = function () {
     app.getCopyrightYear();
     sendEmail();
@@ -15,12 +16,13 @@
   };
 
   app.workItemPage = async function () {
-    app.getCopyrightYear();c
+    app.getCopyrightYear();
     await loadPageData();
     loadNavItems();
     loadSpecificItem();
     updateItemPage();
   };
+
   app.getCopyrightYear = function () {
     document.querySelector('.year').innerText = new Date().getFullYear();
   };
@@ -59,6 +61,7 @@
       sessionStorage.setItem('site-data', JSON.stringify(data));
     }
   }
+
   function loadSpecificItem() {
     const params = new URLSearchParams(window.location.search);
     let item = Number.parseInt(params.get('item'));

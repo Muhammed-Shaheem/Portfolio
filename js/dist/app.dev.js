@@ -38,16 +38,15 @@
         switch (_context2.prev = _context2.next) {
           case 0:
             app.getCopyrightYear();
-            c;
-            _context2.next = 4;
+            _context2.next = 3;
             return regeneratorRuntime.awrap(loadPageData());
 
-          case 4:
+          case 3:
             loadNavItems();
             loadSpecificItem();
             updateItemPage();
 
-          case 7:
+          case 6:
           case "end":
             return _context2.stop();
         }

@@ -15,7 +15,8 @@
       "Dapper",
       "Git",
       "GitHub",
-      "Bootstrap"
+      "Bootstrap",
+      "Dependency Injection"
     ],
     "Challenges": "The main challenges included designing an efficient booking workflow, synchronizing data between the web and desktop apps, and handling booking conflicts. Optimizing database queries with Dapper."
   },
@@ -26,7 +27,15 @@
     "Img": "img/Personal Site.png",
     "ImgAlt": "A image of the My personal Site",
     "About": "I developed a responsive portfolio website to present my projects and skills in a professional way. The site includes a home page, work showcase, and contact section.",
-    "Technologies": ["HTML", "CSS", "JavaScript", "Git", "GitHub", "Json"],
+    "Technologies": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Git",
+      "GitHub",
+      "Json",
+      "Github Pages"
+    ],
     "Challenges": "One of the main challenges was making the portfolio and work item pages dynamic. Instead of using backend APIs, I structured the data in JSON files and loaded them at runtime, which taught me how to manage content dynamically. I also built a flexible navigation system with items loading from JSON, ensuring easier updates and scalability. Another challenge was maintaining responsiveness and consistent styling across devices, which improved my understanding of layout and design practices."
   }
 ]
