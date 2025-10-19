@@ -25,16 +25,9 @@
     "NavTitle": "Chess Game",
     "Title": "Chess Game",
     "Img": "img/chess.png",
-    "ImgAlt": "A image of the chess game",
+    "ImgAlt": "A image of the chess Board",
     "About": "Developing a WPF desktop chess application that allows two players to play on the same computer, focusing on building strong game logic to demonstrate problem-solving and programming skills. The application uses coordinate-based calculations to validate piece movements and enforce chess rules, while a dynamic chessboard UI built with WPF Grid and C# renders pieces and updates the board in real-time. Additional features include highlighting possible moves and sound effects.",
-    "Technologies": [
-      "C#",
-      "WPF",
-      "XAML",
-      "Git",
-      "GitHub"
-      
-    ],
+    "Technologies": ["C#", "WPF", "XAML", "Git", "GitHub"],
     "Challenges": "Implementing the entire game logic based on coordinate calculations and rendering a dynamic chessboard UI in WPF, while ensuring interactive features like possible moves highlighting and sound effects worked correctly."
   }
 ]
