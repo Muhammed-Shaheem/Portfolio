@@ -22,20 +22,19 @@
   },
   {
     "Id": 2,
-    "NavTitle": "Personal Site",
-    "Title": "Shaheem's Portfolio",
-    "Img": "img/Personal Site.png",
-    "ImgAlt": "A image of the My personal Site",
-    "About": "I developed a responsive portfolio website to present my projects and skills in a professional way. The site includes a home page, work showcase, and contact section.",
+    "NavTitle": "Chess Game",
+    "Title": "Chess Game",
+    "Img": "img/Chess.png",
+    "ImgAlt": "A image of the chess game",
+    "About": "Developing a WPF desktop chess application that allows two players to play on the same computer, focusing on building strong game logic to demonstrate problem-solving and programming skills. The application uses coordinate-based calculations to validate piece movements and enforce chess rules, while a dynamic chessboard UI built with WPF Grid and C# renders pieces and updates the board in real-time. Additional features include highlighting possible moves and sound effects.",
     "Technologies": [
-      "HTML",
-      "CSS",
-      "JavaScript",
+      "C#",
+      "WPF",
+      "XAML",
       "Git",
-      "GitHub",
-      "Json",
-      "Github Pages"
+      "GitHub"
+      
     ],
-    "Challenges": "One of the main challenges was making the portfolio and work item pages dynamic. Instead of using backend APIs, I structured the data in JSON files and loaded them at runtime, which taught me how to manage content dynamically. I also built a flexible navigation system with items loading from JSON, ensuring easier updates and scalability. Another challenge was maintaining responsiveness and consistent styling across devices, which improved my understanding of layout and design practices."
+    "Challenges": "Implementing the entire game logic based on coordinate calculations and rendering a dynamic chessboard UI in WPF, while ensuring interactive features like possible moves highlighting and sound effects worked correctly."
   }
 ]
