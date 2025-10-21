@@ -18,6 +18,7 @@
       "Bootstrap",
       "Dependency Injection"
     ],
+    "GitHub":"https://github.com/Muhammed-Shaheem/Hotel-Management-App",
     "Challenges": "The main challenges included designing an efficient booking workflow, synchronizing data between the web and desktop apps, and handling booking conflicts. Optimizing database queries with Dapper."
   },
   {
@@ -28,6 +29,7 @@
     "ImgAlt": "A image of the chess Board",
     "About": "Developing a WPF desktop chess application that allows two players to play on the same computer, focusing on building strong game logic to demonstrate problem-solving and programming skills. The application uses coordinate-based calculations to validate piece movements and enforce chess rules, while a dynamic chessboard UI built with WPF Grid and C# renders pieces and updates the board in real-time. Additional features include highlighting possible moves and sound effects.",
     "Technologies": ["C#", "WPF", "XAML", "Git", "GitHub"],
+    "GitHub":"https://github.com/Muhammed-Shaheem/Hotel-Management-App",
     "Challenges": "Implementing the entire game logic based on coordinate calculations and rendering a dynamic chessboard UI in WPF, while ensuring interactive features like possible moves highlighting worked correctly."
   }
 ]

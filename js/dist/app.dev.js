@@ -168,6 +168,7 @@
 
       img.src = x.Img;
       img.alt = x.ImgAlt;
+      gitHubLink.innerHTML = img;
       projContainer.appendChild(img);
       projDetails.classList.add('project-details');
       h2.innerText = x.Title;
