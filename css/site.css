@@ -394,3 +394,143 @@ nav ul li {
   .social-item .label { display: none; }
 }
 
+/* === HERO SECTION === */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 8%;
+  background: radial-gradient(circle at top left, #0a192f 0%, #020c1b 100%);
+  color: #ffffff;
+  min-height: 90vh;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Left side content */
+.hero-content {
+  flex: 1 1 480px;
+  max-width: 600px;
+  animation: fadeInLeft 1s ease;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.hero-content h1 span {
+  color: #00bcd4; /* cyan accent */
+}
+
+.hero-content h2 {
+  font-size: 1.5rem;
+  color: #b3c7d6;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  color: #ccd6f6;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 500px;
+  margin-bottom: 28px;
+}
+
+/* Buttons */
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.btn-primary, .btn-secondary {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-primary {
+  background: #00bcd4;
+  color: #0a192f;
+  box-shadow: 0 4px 20px rgba(0, 188, 212, 0.3);
+}
+
+.btn-primary:hover {
+  background: #00e5ff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 28px rgba(0, 229, 255, 0.35);
+}
+
+.btn-secondary {
+  border: 1px solid #00bcd4;
+  color: #00bcd4;
+}
+
+.btn-secondary:hover {
+  background: #00bcd4;
+  color: #0a192f;
+  transform: translateY(-3px);
+}
+
+/* Right side image */
+.hero-image {
+  flex: 1 1 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInRight 1.2s ease;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 20px;
+  object-fit: cover;
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.4));
+  transition: transform 0.4s ease;
+}
+
+.hero-image img:hover {
+  transform: scale(1.05);
+}
+
+/* Simple fade animations */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 60px 6%;
+  }
+
+  .hero-content {
+    animation: none;
+  }
+
+  .hero-image img {
+    max-width: 340px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+}
+
+
