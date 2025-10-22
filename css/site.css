@@ -811,31 +811,6 @@ body {
   font-size: 0.95rem;
 }
 
-/* Basic nav styling */
-nav {
-  background: #222;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  position: relative;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-}
-
-nav ul li a.active {
-  color: #00bfff;
-  font-weight: bold;
-}
 
 /* Nav header for mobile */
 .nav-header {
