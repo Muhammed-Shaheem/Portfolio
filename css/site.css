@@ -853,3 +853,44 @@ section {
 }
 
 
+/* 📱 Small screens */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  #portfolio-section {
+    padding: 2rem 1rem;
+  }
+
+  #contact-me {
+    padding: 2.5rem 1rem;
+  }
+
+  .workitem-main {
+    padding: 2rem 1rem;
+  }
+}
+
+/* 📱 Very small phones */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  nav ul {
+    gap: 0.5rem;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+  }
+}
+
+

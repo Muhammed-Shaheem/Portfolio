@@ -130,6 +130,11 @@
   }
 
   function updateItemPage() {
+    var body = document.querySelector('body');
+    body.style.background = 'radial-gradient(circle at top left, #101010 0%, #0c0c0c 40%, #080808 100%)';
+    body.style.backgroundAttachment = 'fixed';
+    body.style.color = '#f5f5f5';
+    body.style.fontFamily = "'Poppins', sans-serif";
     var header = document.getElementById('project-title');
     header.innerText = "0".concat(app.selectedItem.id, ". ").concat(app.selectedItem.Title);
     var img = document.getElementById('project-image');
