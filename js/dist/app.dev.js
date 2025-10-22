@@ -194,10 +194,10 @@
     if (!app || !Array.isArray(app.portfolioItems)) {
       console.error("Portfolio items not available in app object.");
       return;
-    } // Clear old nav items first
+    } // ✅ Clear old nav items first (in case of reload)
 
 
-    nav.innerHTML = ""; // Static links
+    nav.innerHTML = ""; // ✅ Add Home and Projects manually first
 
     var staticLinks = [{
       href: "index.html",
@@ -214,7 +214,7 @@
       a.classList.add("nav-link");
       li.appendChild(a);
       nav.appendChild(li);
-    }); // Dynamic project links
+    }); // ✅ Dynamically add project links from JSON
 
     app.portfolioItems.forEach(function (x) {
       var li = document.createElement("li");
@@ -224,29 +224,13 @@
       a.classList.add("nav-link");
       li.appendChild(a);
       nav.appendChild(li);
-    }); // Highlight active page
+    }); // ✅ Highlight active page link
 
     var currentPage = window.location.pathname.split("/").pop();
     nav.querySelectorAll("a").forEach(function (a) {
       if (a.getAttribute("href") === currentPage) {
         a.classList.add("active");
       }
-    }); // ✅ RESPONSIVE HAMBURGER TOGGLE
-
-    var toggleBtn = document.querySelector(".nav-toggle");
-    toggleBtn.addEventListener("click", function () {
-      nav.classList.toggle("nav-open");
-    }); // Optional: Close menu on link click (mobile-friendly)
-
-    nav.querySelectorAll("a").forEach(function (a) {
-      a.addEventListener("click", function () {
-        if (nav.classList.contains("nav-open")) {
-          nav.classList.remove("nav-open");
-        }
-      });
     });
-  } // Call after DOM loaded
-
-
-  document.addEventListener("DOMContentLoaded", loadNavItems);
+  }
 })(window.app = window.app || {});

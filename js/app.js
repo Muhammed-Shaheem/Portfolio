@@ -151,7 +151,7 @@ function updateItemPage() {
 }
 
 
-function loadNavItems() {
+ function loadNavItems() {
   const nav = document.querySelector("nav ul");
   if (!nav) {
     console.warn("Navigation <ul> element not found.");
@@ -163,10 +163,10 @@ function loadNavItems() {
     return;
   }
 
-  // Clear old nav items first
+  // ✅ Clear old nav items first (in case of reload)
   nav.innerHTML = "";
 
-  // Static links
+  // ✅ Add Home and Projects manually first
   const staticLinks = [
     { href: "index.html", text: "Home" },
     { href: "portfolio.html", text: "Projects" },
@@ -182,43 +182,28 @@ function loadNavItems() {
     nav.appendChild(li);
   });
 
-  // Dynamic project links
+  // ✅ Dynamically add project links from JSON
   app.portfolioItems.forEach((x) => {
     const li = document.createElement("li");
     const a = document.createElement("a");
+
     a.href = `workitem.html?item=${x.Id}`;
     a.innerText = x.NavTitle;
     a.classList.add("nav-link");
+
     li.appendChild(a);
     nav.appendChild(li);
   });
 
-  // Highlight active page
+  // ✅ Highlight active page link
   const currentPage = window.location.pathname.split("/").pop();
   nav.querySelectorAll("a").forEach((a) => {
     if (a.getAttribute("href") === currentPage) {
       a.classList.add("active");
     }
+
   });
 
-  // ✅ RESPONSIVE HAMBURGER TOGGLE
-  const toggleBtn = document.querySelector(".nav-toggle");
-  toggleBtn.addEventListener("click", () => {
-    nav.classList.toggle("nav-open");
-  });
-
-  // Optional: Close menu on link click (mobile-friendly)
-  nav.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", () => {
-      if (nav.classList.contains("nav-open")) {
-        nav.classList.remove("nav-open");
-      }
-    });
-  });
 }
-
-// Call after DOM loaded
-document.addEventListener("DOMContentLoaded", loadNavItems);
-
 
 })((window.app = window.app || {}));
