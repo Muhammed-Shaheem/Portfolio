@@ -73,32 +73,46 @@
     app.selectedItem.id = item;
   }
 
-  function updateItemPage() {
-    const header = document.getElementById('project-title');
-    header.innerText = `0${app.selectedItem.id}. ${app.selectedItem.Title}`;
-
-    const img = document.getElementById('project-image');
-    img.src = app.selectedItem.Img;
-    img.alt = app.selectedItem.ImgAlt;
-
-    const about = document.querySelector('#project-about p');
-    about.innerText = app.selectedItem.About;
-
-    const techStackList = document.querySelector('#project-technologies ul');
-    const techSection = document.querySelector('#project-technologies');
-    const ul = document.createElement('ul');
-
-    app.selectedItem.Technologies.forEach((x) => {
-      const li = document.createElement('li');
-      li.innerText = x;
-      ul.appendChild(li);
-    });
-    techStackList.remove();
-    techSection.appendChild(ul);
-
-    const challenges = document.querySelector('#project-challenges p');
-    challenges.innerText = app.selectedItem.Challenges;
+function updateItemPage() {
+  if (!app || !app.selectedItem) {
+    console.error("No project selected in app.selectedItem.");
+    return;
   }
+
+  const item = app.selectedItem;
+
+  // ✅ Update project title
+  const header = document.getElementById("project-title");
+  header.innerText = `${item.Id.toString().padStart(2, "0")}. ${item.Title}`;
+
+  // ✅ Update image
+  const img = document.getElementById("project-image");
+  img.src = item.Img;
+  img.alt = item.ImgAlt;
+  img.loading = "lazy";
+
+  // ✅ Update about
+  const about = document.querySelector("#project-about p");
+  about.innerText = item.About || "Details coming soon...";
+
+  // ✅ Update technologies list
+  const techSection = document.querySelector("#project-technologies");
+  const oldList = techSection.querySelector("ul");
+  if (oldList) oldList.remove();
+
+  const ul = document.createElement("ul");
+  item.Technologies?.forEach((tech) => {
+    const li = document.createElement("li");
+    li.innerText = tech;
+    ul.appendChild(li);
+  });
+  techSection.appendChild(ul);
+
+  // ✅ Update challenges
+  const challenges = document.querySelector("#project-challenges p");
+  challenges.innerText = item.Challenges || "No major challenges mentioned.";
+}
+
 
  function loadPortfolioPage() {
   const main = document.querySelector("main");

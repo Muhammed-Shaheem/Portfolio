@@ -525,7 +525,7 @@ body {
   background-color: #161b22;
   color: #f0f6fc;
   text-align: center;
-  padding: 100px 10%;
+  padding: 50px 10%;
 }
 
 .portfolio-hero h1 {
@@ -737,6 +737,79 @@ body {
 }
 
 
+.workitem-main {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+  color: #f5f5f5;
+}
+
+#project-title {
+  font-size: 2rem;
+  color: #00bcd4;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Project Image */
+#image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+#image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  object-position: top;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Sections */
+.work-item {
+  background: #121212;
+  border-radius: 12px;
+  padding: 1.8rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.work-item h3 {
+  color: #00bcd4;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.project-para {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* Technologies List */
+#project-technologies ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+#project-technologies li {
+  background: #00bcd4;
+  color: #0a0a0a;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
 
 
 /* Responsive typography */
