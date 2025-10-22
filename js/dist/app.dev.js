@@ -152,44 +152,80 @@
   }
 
   function loadPortfolioPage() {
-    var main = document.querySelector('main');
-    var nav = document.querySelector('nav');
-    app.portfolioItems.forEach(function (x, i) {
-      var img = document.createElement('img');
-      var projDetails = document.createElement('div');
-      var projContainer = document.createElement('div');
-      var h2 = document.createElement('h2');
-      var a = document.createElement('a');
-      projContainer.classList.add('project-container');
+    var main = document.querySelector("main");
 
-      if (i % 2 !== 0) {
-        projContainer.classList.add('project-container-odd');
-      }
+    if (!main) {
+      console.warn("<main> element not found.");
+      return;
+    }
 
-      img.src = x.Img;
-      img.alt = x.ImgAlt;
-      gitHubLink.innerHTML = img;
-      projContainer.appendChild(img);
-      projDetails.classList.add('project-details');
-      h2.innerText = x.Title;
-      a.href = "workitem.html?item=".concat(x.Id);
-      a.innerText = 'See more';
-      projDetails.appendChild(h2);
-      projDetails.appendChild(a);
-      projContainer.appendChild(projDetails);
-      main.appendChild(projContainer);
+    if (!app || !Array.isArray(app.portfolioItems)) {
+      console.error("Portfolio items not found in app object.");
+      return;
+    } // Clear existing content
+
+
+    main.innerHTML = ""; // Create container for all projects
+
+    var portfolioGrid = document.createElement("div");
+    portfolioGrid.classList.add("portfolio-grid");
+    app.portfolioItems.forEach(function (x) {
+      var card = document.createElement("div");
+      card.classList.add("project-card");
+      card.innerHTML = "\n      <img src=\"".concat(x.Img, "\" alt=\"").concat(x.ImgAlt, "\" loading=\"lazy\" />\n      <div class=\"project-content\">\n        <h2>").concat(x.Title, "</h2>\n        <p>").concat(x.Description || "A project built to explore and apply my software engineering skills.", "</p>\n        <a href=\"workitem.html?item=").concat(x.Id, "\" class=\"btn\">View Details</a>\n      </div>\n    ");
+      portfolioGrid.appendChild(card);
     });
+    main.appendChild(portfolioGrid);
   }
 
   function loadNavItems() {
-    var nav = document.querySelector('nav ul');
-    app.portfolioItems.forEach(function (x) {
-      var li = document.createElement('li');
-      var a = document.createElement('a');
-      a.href = "workitem.html?item=".concat(x.Id);
-      a.innerText = x.NavTitle;
+    var nav = document.querySelector("nav ul");
+
+    if (!nav) {
+      console.warn("Navigation <ul> element not found.");
+      return;
+    }
+
+    if (!app || !Array.isArray(app.portfolioItems)) {
+      console.error("Portfolio items not available in app object.");
+      return;
+    } // ✅ Clear old nav items first (in case of reload)
+
+
+    nav.innerHTML = ""; // ✅ Add Home and Projects manually first
+
+    var staticLinks = [{
+      href: "index.html",
+      text: "Home"
+    }, {
+      href: "portfolio.html",
+      text: "Projects"
+    }];
+    staticLinks.forEach(function (link) {
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = link.href;
+      a.innerText = link.text;
+      a.classList.add("nav-link");
       li.appendChild(a);
       nav.appendChild(li);
+    }); // ✅ Dynamically add project links from JSON
+
+    app.portfolioItems.forEach(function (x) {
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = "workitem.html?item=".concat(x.Id);
+      a.innerText = x.NavTitle;
+      a.classList.add("nav-link");
+      li.appendChild(a);
+      nav.appendChild(li);
+    }); // ✅ Highlight active page link
+
+    var currentPage = window.location.pathname.split("/").pop();
+    nav.querySelectorAll("a").forEach(function (a) {
+      if (a.getAttribute("href") === currentPage) {
+        a.classList.add("active");
+      }
     });
   }
 })(window.app = window.app || {});
