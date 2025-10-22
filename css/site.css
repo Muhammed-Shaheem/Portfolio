@@ -830,3 +830,45 @@ section {
     font-size: 0.85rem;
   }
 }
+
+/* ===== GLOBAL RESPONSIVE ENHANCEMENTS ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Responsive typography */
+h1, h2, h3, p, a, button, input, textarea {
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+/* General responsive spacing */
+section {
+  padding: 80px 10%;
+}
+
+@media (max-width: 900px) {
+  section {
+    padding: 60px 7%;
+  }
+}
+
+@media (max-width: 600px) {
+  section {
+    padding: 50px 5%;
+  }
+  h1 {
+    font-size: 1.9rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+}
