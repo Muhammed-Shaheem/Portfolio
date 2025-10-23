@@ -180,53 +180,21 @@
   }
 
   function loadNavItems() {
-    var nav = document.querySelector("nav ul");
-
-    if (!nav) {
-      console.warn("Navigation <ul> element not found.");
-      return;
-    }
-
-    if (!app || !Array.isArray(app.portfolioItems)) {
-      console.error("Portfolio items not available in app object.");
-      return;
-    } // ✅ Clear old nav items first (in case of reload)
-
-
-    nav.innerHTML = ""; // ✅ Add Home and Projects manually first
-
-    var staticLinks = [{
-      href: "index.html",
-      text: "Home"
-    }, {
-      href: "portfolio.html",
-      text: "Projects"
-    }];
-    staticLinks.forEach(function (link) {
-      var li = document.createElement("li");
-      var a = document.createElement("a");
-      a.href = link.href;
-      a.innerText = link.text;
-      a.classList.add("nav-link");
-      li.appendChild(a);
-      nav.appendChild(li);
-    }); // ✅ Dynamically add project links from JSON
-
+    var nav = document.querySelector('nav ul');
     app.portfolioItems.forEach(function (x) {
-      var li = document.createElement("li");
-      var a = document.createElement("a");
+      var li = document.createElement('li');
+      var a = document.createElement('a');
       a.href = "workitem.html?item=".concat(x.Id);
       a.innerText = x.NavTitle;
-      a.classList.add("nav-link");
       li.appendChild(a);
       nav.appendChild(li);
-    }); // ✅ Highlight active page link
+    }); // Modern mobile menu toggle
 
-    var currentPage = window.location.pathname.split("/").pop();
-    nav.querySelectorAll("a").forEach(function (a) {
-      if (a.getAttribute("href") === currentPage) {
-        a.classList.add("active");
-      }
+    var menuToggle = document.getElementById('menu-toggle');
+    var navLinks = document.getElementById('nav-links');
+    menuToggle.addEventListener('click', function () {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('show');
     });
   }
 })(window.app = window.app || {});

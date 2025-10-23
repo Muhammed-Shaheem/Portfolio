@@ -73,123 +73,88 @@
     app.selectedItem.id = item;
   }
 
-function updateItemPage() {
-  const body = document.querySelector('body');
-  body.style.background = 'radial-gradient(circle at top left, #101010 0%, #0c0c0c 40%, #080808 100%)';
-  body.style.backgroundAttachment = 'fixed';
-  body.style.color = '#f5f5f5';
-  body.style.fontFamily = "'Poppins', sans-serif";
+  function updateItemPage() {
+    const body = document.querySelector('body');
+    body.style.background =
+      'radial-gradient(circle at top left, #101010 0%, #0c0c0c 40%, #080808 100%)';
+    body.style.backgroundAttachment = 'fixed';
+    body.style.color = '#f5f5f5';
+    body.style.fontFamily = "'Poppins', sans-serif";
 
-  const header = document.getElementById('project-title');
-  header.innerText = `0${app.selectedItem.id}. ${app.selectedItem.Title}`;
+    const header = document.getElementById('project-title');
+    header.innerText = `0${app.selectedItem.id}. ${app.selectedItem.Title}`;
 
-  const img = document.getElementById('project-image');
-  img.src = app.selectedItem.Img;
-  img.alt = app.selectedItem.ImgAlt;
+    const img = document.getElementById('project-image');
+    img.src = app.selectedItem.Img;
+    img.alt = app.selectedItem.ImgAlt;
 
-  const about = document.querySelector('#project-about p');
-  about.innerText = app.selectedItem.About;
+    const about = document.querySelector('#project-about p');
+    about.innerText = app.selectedItem.About;
 
-  const techStackList = document.querySelector('#project-technologies ul');
-  const techSection = document.querySelector('#project-technologies');
-  const ul = document.createElement('ul');
+    const techStackList = document.querySelector('#project-technologies ul');
+    const techSection = document.querySelector('#project-technologies');
+    const ul = document.createElement('ul');
 
-  app.selectedItem.Technologies.forEach((x) => {
-    const li = document.createElement('li');
-    li.innerText = x;
-    ul.appendChild(li);
-  });
-  techStackList.remove();
-  techSection.appendChild(ul);
+    app.selectedItem.Technologies.forEach((x) => {
+      const li = document.createElement('li');
+      li.innerText = x;
+      ul.appendChild(li);
+    });
+    techStackList.remove();
+    techSection.appendChild(ul);
 
-  const challenges = document.querySelector('#project-challenges p');
-  challenges.innerText = app.selectedItem.Challenges;
-}
-
-function loadPortfolioPage() {
-  const grid = document.querySelector('.projects-grid');
-
-  app.portfolioItems.forEach((x, i) => {
-    const projContainer = document.createElement('div');
-    projContainer.classList.add('project-card');
-
-    const img = document.createElement('img');
-    img.src = x.Img;
-    img.alt = x.ImgAlt;
-
-    const details = document.createElement('div');
-    details.classList.add('project-info');
-
-    const title = document.createElement('h2');
-    title.innerText = x.Title;
-
-    const link = document.createElement('a');
-    link.href = `workitem.html?item=${x.Id}`;
-    link.innerText = 'See More';
-
-    details.appendChild(title);
-    details.appendChild(link);
-    projContainer.appendChild(img);
-    projContainer.appendChild(details);
-    grid.appendChild(projContainer);
-  });
-}
-
-
-
- function loadNavItems() {
-  const nav = document.querySelector("nav ul");
-  if (!nav) {
-    console.warn("Navigation <ul> element not found.");
-    return;
+    const challenges = document.querySelector('#project-challenges p');
+    challenges.innerText = app.selectedItem.Challenges;
   }
 
-  if (!app || !Array.isArray(app.portfolioItems)) {
-    console.error("Portfolio items not available in app object.");
-    return;
+  function loadPortfolioPage() {
+    const grid = document.querySelector('.projects-grid');
+
+    app.portfolioItems.forEach((x, i) => {
+      const projContainer = document.createElement('div');
+      projContainer.classList.add('project-card');
+
+      const img = document.createElement('img');
+      img.src = x.Img;
+      img.alt = x.ImgAlt;
+
+      const details = document.createElement('div');
+      details.classList.add('project-info');
+
+      const title = document.createElement('h2');
+      title.innerText = x.Title;
+
+      const link = document.createElement('a');
+      link.href = `workitem.html?item=${x.Id}`;
+      link.innerText = 'See More';
+
+      details.appendChild(title);
+      details.appendChild(link);
+      projContainer.appendChild(img);
+      projContainer.appendChild(details);
+      grid.appendChild(projContainer);
+    });
   }
 
-  // ✅ Clear old nav items first (in case of reload)
-  nav.innerHTML = "";
+  function loadNavItems() {
+    const nav = document.querySelector('nav ul');
+    app.portfolioItems.forEach((x) => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
 
-  // ✅ Add Home and Projects manually first
-  const staticLinks = [
-    { href: "index.html", text: "Home" },
-    { href: "portfolio.html", text: "Projects" },
-  ];
+      a.href = `workitem.html?item=${x.Id}`;
+      a.innerText = x.NavTitle;
 
-  staticLinks.forEach((link) => {
-    const li = document.createElement("li");
-    const a = document.createElement("a");
-    a.href = link.href;
-    a.innerText = link.text;
-    a.classList.add("nav-link");
-    li.appendChild(a);
-    nav.appendChild(li);
-  });
+      li.appendChild(a);
+      nav.appendChild(li);
+    });
+    // Modern mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
 
-  // ✅ Dynamically add project links from JSON
-  app.portfolioItems.forEach((x) => {
-    const li = document.createElement("li");
-    const a = document.createElement("a");
-
-    a.href = `workitem.html?item=${x.Id}`;
-    a.innerText = x.NavTitle;
-    a.classList.add("nav-link");
-
-    li.appendChild(a);
-    nav.appendChild(li);
-  });
-
-  // ✅ Highlight active page link
-  const currentPage = window.location.pathname.split("/").pop();
-  nav.querySelectorAll("a").forEach((a) => {
-    if (a.getAttribute("href") === currentPage) {
-      a.classList.add("active");
-    }
-
-  });
-
-}
-
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('show');
+    });
+  }
 })((window.app = window.app || {}));
