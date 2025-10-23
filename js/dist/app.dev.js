@@ -181,20 +181,33 @@
 
   function loadNavItems() {
     var nav = document.querySelector('nav ul');
+    if (!nav) return;
+    var currentPage = window.location.pathname.split("/").pop(); // e.g., "portfolio.html" or "workitem.html"
+
     app.portfolioItems.forEach(function (x) {
       var li = document.createElement('li');
       var a = document.createElement('a');
       a.href = "workitem.html?item=".concat(x.Id);
-      a.innerText = x.NavTitle;
+      a.innerText = x.NavTitle; // ✅ Highlight active link when on a workitem page
+
+      var urlParams = new URLSearchParams(window.location.search);
+      var currentItem = urlParams.get('item');
+
+      if (currentPage === 'workitem.html' && currentItem == x.Id) {
+        a.classList.add('active');
+      }
+
       li.appendChild(a);
       nav.appendChild(li);
-    }); // Modern mobile menu toggle
+    }); // ✅ Highlight nav links for main pages
 
-    var menuToggle = document.getElementById('menu-toggle');
-    var navLinks = document.getElementById('nav-links');
-    menuToggle.addEventListener('click', function () {
-      menuToggle.classList.toggle('active');
-      navLinks.classList.toggle('show');
+    var mainLinks = document.querySelectorAll('nav a');
+    mainLinks.forEach(function (link) {
+      var href = link.getAttribute('href');
+
+      if (href === currentPage) {
+        link.classList.add('active');
+      }
     });
   }
 })(window.app = window.app || {});

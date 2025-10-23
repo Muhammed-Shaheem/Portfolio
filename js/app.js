@@ -135,26 +135,38 @@
       grid.appendChild(projContainer);
     });
   }
+function loadNavItems() {
+  const nav = document.querySelector('nav ul');
+  if (!nav) return;
 
-  function loadNavItems() {
-    const nav = document.querySelector('nav ul');
-    app.portfolioItems.forEach((x) => {
-      const li = document.createElement('li');
-      const a = document.createElement('a');
+  const currentPage = window.location.pathname.split("/").pop(); // e.g., "portfolio.html" or "workitem.html"
 
-      a.href = `workitem.html?item=${x.Id}`;
-      a.innerText = x.NavTitle;
+  app.portfolioItems.forEach((x) => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
 
-      li.appendChild(a);
-      nav.appendChild(li);
-    });
-    // Modern mobile menu toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
+    a.href = `workitem.html?item=${x.Id}`;
+    a.innerText = x.NavTitle;
 
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('active');
-      navLinks.classList.toggle('show');
-    });
-  }
+    // ✅ Highlight active link when on a workitem page
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentItem = urlParams.get('item');
+    if (currentPage === 'workitem.html' && currentItem == x.Id) {
+      a.classList.add('active');
+    }
+
+    li.appendChild(a);
+    nav.appendChild(li);
+  });
+
+  // ✅ Highlight nav links for main pages
+  const mainLinks = document.querySelectorAll('nav a');
+  mainLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPage) {
+      link.classList.add('active');
+    }
+  });
+}
+  
 })((window.app = window.app || {}));

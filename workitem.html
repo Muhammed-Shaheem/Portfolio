@@ -41,16 +41,24 @@
     <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
-      <nav class="nav-bar">
-      <div class="nav-container">
-        <a href="index.html" class="logo">Muhammed Shaheem<span class="dot">.</span></a>
-        <ul class="nav-links">
+    <header>
+      <nav class="navbar">
+        <div class="logo">Muhammed Shaheem</div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
           <li><a href="index.html">Home</a></li>
-          <li><a href="portfolio.html" class="active">Projects</a></li>
+          <li><a href="portfolio.html">Projects</a></li>
         </ul>
-      </div>
-    </nav>
-   
+      </nav>
+    </header>
+
     <main class="workitem-main">
       <h2 id="project-title"></h2>
       <div id="image-container">
@@ -69,8 +77,11 @@
         <p class="project-para"></p>
       </div>
     </main>
-       <footer class="footer">
-      <p>&copy; <span class="year">2025</span> — Built by <strong>Muhammed Shaheem</strong></p>
+    <footer class="footer">
+      <p>
+        &copy; <span class="year">2025</span> — Built by
+        <strong>Muhammed Shaheem</strong>
+      </p>
     </footer>
     <script src="js/app.js"></script>
     <script>
