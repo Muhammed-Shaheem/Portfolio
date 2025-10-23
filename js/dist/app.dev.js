@@ -157,30 +157,26 @@
   }
 
   function loadPortfolioPage() {
-    var main = document.querySelector("main");
-
-    if (!main) {
-      console.warn("<main> element not found.");
-      return;
-    }
-
-    if (!app || !Array.isArray(app.portfolioItems)) {
-      console.error("Portfolio items not found in app object.");
-      return;
-    } // Clear existing content
-
-
-    main.innerHTML = ""; // Create container for all projects
-
-    var portfolioGrid = document.createElement("div");
-    portfolioGrid.classList.add("portfolio-grid");
-    app.portfolioItems.forEach(function (x) {
-      var card = document.createElement("div");
-      card.classList.add("project-card");
-      card.innerHTML = "\n      <img src=\"".concat(x.Img, "\" alt=\"").concat(x.ImgAlt, "\" loading=\"lazy\" />\n      <div class=\"project-content\">\n        <h2>").concat(x.Title, "</h2>\n        <p>").concat(x.Description || "A project built to explore and apply my software engineering skills.", "</p>\n        <a href=\"workitem.html?item=").concat(x.Id, "\" class=\"btn\">View Details</a>\n      </div>\n    ");
-      portfolioGrid.appendChild(card);
+    var grid = document.querySelector('.projects-grid');
+    app.portfolioItems.forEach(function (x, i) {
+      var projContainer = document.createElement('div');
+      projContainer.classList.add('project-card');
+      var img = document.createElement('img');
+      img.src = x.Img;
+      img.alt = x.ImgAlt;
+      var details = document.createElement('div');
+      details.classList.add('project-info');
+      var title = document.createElement('h2');
+      title.innerText = x.Title;
+      var link = document.createElement('a');
+      link.href = "workitem.html?item=".concat(x.Id);
+      link.innerText = 'See More';
+      details.appendChild(title);
+      details.appendChild(link);
+      projContainer.appendChild(img);
+      projContainer.appendChild(details);
+      grid.appendChild(projContainer);
     });
-    main.appendChild(portfolioGrid);
   }
 
   function loadNavItems() {

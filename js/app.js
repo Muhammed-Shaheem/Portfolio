@@ -106,49 +106,35 @@ function updateItemPage() {
   challenges.innerText = app.selectedItem.Challenges;
 }
 
+function loadPortfolioPage() {
+  const grid = document.querySelector('.projects-grid');
 
+  app.portfolioItems.forEach((x, i) => {
+    const projContainer = document.createElement('div');
+    projContainer.classList.add('project-card');
 
+    const img = document.createElement('img');
+    img.src = x.Img;
+    img.alt = x.ImgAlt;
 
+    const details = document.createElement('div');
+    details.classList.add('project-info');
 
- function loadPortfolioPage() {
-  const main = document.querySelector("main");
-  if (!main) {
-    console.warn("<main> element not found.");
-    return;
-  }
+    const title = document.createElement('h2');
+    title.innerText = x.Title;
 
-  if (!app || !Array.isArray(app.portfolioItems)) {
-    console.error("Portfolio items not found in app object.");
-    return;
-  }
+    const link = document.createElement('a');
+    link.href = `workitem.html?item=${x.Id}`;
+    link.innerText = 'See More';
 
-  // Clear existing content
-  main.innerHTML = "";
-
-
-
-  // Create container for all projects
-  const portfolioGrid = document.createElement("div");
-  portfolioGrid.classList.add("portfolio-grid");
-
-  app.portfolioItems.forEach((x) => {
-    const card = document.createElement("div");
-    card.classList.add("project-card");
-
-    card.innerHTML = `
-      <img src="${x.Img}" alt="${x.ImgAlt}" loading="lazy" />
-      <div class="project-content">
-        <h2>${x.Title}</h2>
-        <p>${x.Description || "A project built to explore and apply my software engineering skills."}</p>
-        <a href="workitem.html?item=${x.Id}" class="btn">View Details</a>
-      </div>
-    `;
-
-    portfolioGrid.appendChild(card);
+    details.appendChild(title);
+    details.appendChild(link);
+    projContainer.appendChild(img);
+    projContainer.appendChild(details);
+    grid.appendChild(projContainer);
   });
-
-  main.appendChild(portfolioGrid);
 }
+
 
 
  function loadNavItems() {
