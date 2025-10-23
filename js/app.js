@@ -159,6 +159,15 @@ function loadNavItems() {
     nav.appendChild(li);
   });
 
+
+  // Modern mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('show');
+    });
   // ✅ Highlight nav links for main pages
   const mainLinks = document.querySelectorAll('nav a');
   mainLinks.forEach(link => {
@@ -167,6 +176,9 @@ function loadNavItems() {
       link.classList.add('active');
     }
   });
+
+   
+
 }
-  
+
 })((window.app = window.app || {}));
