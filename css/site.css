@@ -587,6 +587,67 @@ header {
   transform: translateY(-3px);
 }
 
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-item i {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+/* Hover Effects */
+.social-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.social-item:hover i {
+  transform: scale(1.2);
+}
+
+/* LinkedIn */
+.social-item.linkedin {
+  color: #0a66c2;
+  background: rgba(10, 102, 194, 0.1);
+}
+
+/* GitHub */
+.social-item.github {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .social-item {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
 
 /* ==== RESPONSIVE ==== */
 @media (max-width: 900px) {
