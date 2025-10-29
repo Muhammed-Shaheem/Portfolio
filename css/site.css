@@ -514,15 +514,15 @@ header {
   justify-content: center;
   align-items: center;
   margin-bottom: 40px;
-  padding: 0;              /* no inner spacing */
+  padding: 0; /* no inner spacing */
   background: transparent; /* ✅ remove the unwanted box */
-  border-radius: 0;        /* ✅ no rounded border around image */
-  box-shadow: none;        /* ✅ remove any shadow background */
+  border-radius: 0; /* ✅ no rounded border around image */
+  box-shadow: none; /* ✅ remove any shadow background */
 }
 
 /* ==== Image itself ==== */
 #image-container img {
-  width: 60%;              /* slightly bigger on desktop */
+  width: 60%; /* slightly bigger on desktop */
   height: auto;
   object-fit: contain;
   border-radius: 12px;
@@ -647,8 +647,6 @@ header {
   }
 }
 
-
-
 /* ==== RESPONSIVE ==== */
 @media (max-width: 900px) {
   .workitem-main {
@@ -679,16 +677,15 @@ header {
   }
 }
 
-
 @media (max-width: 900px) {
   #image-container img {
-    width: 80%;            /* slightly bigger on tablets */
+    width: 80%; /* slightly bigger on tablets */
   }
 }
 
 @media (max-width: 600px) {
   #image-container img {
-    width: 95%;            /* almost full width on mobile but with small padding */
+    width: 95%; /* almost full width on mobile but with small padding */
   }
 }
 
@@ -714,6 +711,7 @@ header {
     transition: all 0.4s ease;
     border-bottom-left-radius: 16px;
     border-bottom-right-radius: 16px;
+     margin-block-start: 0;
   }
 
   .nav-links.show {
@@ -728,9 +726,6 @@ header {
     padding: 8px 0;
   }
 }
-
-
-
 
 /* ======= Responsive Navigation ======= */
 @media (max-width: 900px) {
@@ -756,8 +751,6 @@ header {
     font-size: 0.95rem;
   }
 }
-
-
 
 /* 🌍 Base: Desktop-first (>=1200px) */
 /* Already good — no change needed for large screens */
