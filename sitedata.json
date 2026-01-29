@@ -27,7 +27,7 @@
     "Title": "Chess Game",
     "Img": "img/chess.png",
     "ImgAlt": "A image of the chess Board",
-    "About": "Developing a WPF desktop chess application that allows two players to play on the same computer, focusing on building strong game logic to demonstrate problem-solving and programming skills. The application uses coordinate-based calculations to validate piece movements and enforce chess rules, while a dynamic chessboard UI built with WPF Grid and C# renders pieces and updates the board in real-time. Additional features include highlighting possible moves and sound effects.",
+    "About":"A WPF desktop chess application that allows two players to play on the same computer. The project focuses on implementing core chess rules and move validation using coordinate-based logic. The chessboard and pieces are rendered dynamically using WPF Grid and C#, with real-time updates as moves are made. Additional features include highlighting valid moves.git",
     "Technologies": ["C#", "WPF", "XAML", "Git", "GitHub"],
     "GitHub": "https://github.com/Muhammed-Shaheem/Hotel-Management-App",
     "Challenges": "Implementing the entire game logic based on coordinate calculations and rendering a dynamic chessboard UI in WPF, while ensuring interactive features like possible moves highlighting worked correctly."
