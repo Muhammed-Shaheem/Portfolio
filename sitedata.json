@@ -27,9 +27,30 @@
     "Title": "Chess Game",
     "Img": "img/chess.png",
     "ImgAlt": "A image of the chess Board",
-    "About":"A WPF desktop chess application that allows two players to play on the same computer. The project focuses on implementing core chess rules and move validation using coordinate-based logic. The chessboard and pieces are rendered dynamically using WPF Grid and C#, with real-time updates as moves are made. Additional features include highlighting valid moves.git",
+    "About": "A WPF desktop chess application that allows two players to play on the same computer. The project focuses on implementing core chess rules and move validation using coordinate-based logic. The chessboard and pieces are rendered dynamically using WPF Grid and C#, with real-time updates as moves are made. Additional features include highlighting valid moves",
     "Technologies": ["C#", "WPF", "XAML", "Git", "GitHub"],
     "GitHub": "https://github.com/Muhammed-Shaheem/Hotel-Management-App",
     "Challenges": "Implementing the entire game logic based on coordinate calculations and rendering a dynamic chessboard UI in WPF, while ensuring interactive features like possible moves highlighting worked correctly."
+  },
+  {
+    "Id": 3,
+    "NavTitle": "DataGen AI",
+    "Title": "DataGen AI — Data Generator",
+    "Img": "img/datagenai.png",
+    "ImgAlt": "Screenshot of DataGen AI desktop application",
+    "About": "A .NET-based application designed to generate structured data using a locally loaded GGUF language model. The project focuses on building a reusable core library for prompt construction, batching, JSON extraction, and validation, with a WPF desktop UI and a minimal ASP.NET Core API layered on top. The system is intended for controlled data generation scenarios where output format and validation are important.",
+    "Technologies": [
+      "C#",
+      ".NET",
+      "WPF",
+      "ASP.NET Core API",
+      "LlamaSharp",
+      "GGUF",
+      "JSON",
+      "Git",
+      "GitHub"
+    ],
+    "GitHub": "https://github.com/Muhammed-Shaheem/DataGen-AI",
+    "Challenges": "Designing a reliable workflow for extracting and validating structured JSON output from a language model, while keeping the core library independent from UI and API layers."
   }
 ]
