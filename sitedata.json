@@ -35,10 +35,10 @@
   {
     "Id": 3,
     "NavTitle": "DataGen AI",
-    "Title": "DataGen AI — Data Generator",
+    "Title": "DataGen AI — Sample Data Generator",
     "Img": "img/datagenai.png",
     "ImgAlt": "Screenshot of DataGen AI desktop application",
-    "About": "A .NET-based application designed to generate structured data using a locally loaded GGUF language model. The project focuses on building a reusable core library for prompt construction, batching, JSON extraction, and validation, with a WPF desktop UI and a minimal ASP.NET Core API layered on top. The system is intended for controlled data generation scenarios where output format and validation are important.",
+    "About": "A .NET application designed to generate sample data based on a user-provided JSON schema. The user supplies a JSON structure without values along with the required number of records, and the system returns populated dummy data that matches the schema. The project focuses on reliably constructing prompts for a local language model and extracting valid JSON output that conforms to the input structure.",
     "Technologies": [
       "C#",
       ".NET",
@@ -51,6 +51,6 @@
       "GitHub"
     ],
     "GitHub": "https://github.com/Muhammed-Shaheem/DataGen-AI",
-    "Challenges": "Designing a reliable workflow for extracting and validating structured JSON output from a language model, while keeping the core library independent from UI and API layers."
+    "Challenges": "Contructing the prompt and implementing robust JSON extraction and validation to ensure the generated output strictly follows the input schema and requested record count."
   }
 ]
